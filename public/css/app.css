@@ -588,7 +588,8 @@ pre code {
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
-    margin-left: auto
+    margin-left: auto;
+    
 }
 
 @media (min-width:576px) {
@@ -620,7 +621,9 @@ pre code {
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
-    margin-left: auto
+    margin-left: auto;
+    background-color: #1d643b;
+
 }
 
 .row {
@@ -4112,7 +4115,8 @@ input[type=submit].btn-block {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between
+    justify-content: space-between;
+    background-color: rgb(73, 33, 33);
 }
 
 .navbar-brand {
@@ -4136,6 +4140,7 @@ input[type=submit].btn-block {
     padding-left: 0;
     margin-bottom: 0;
     list-style: none
+    
 }
 
 .navbar-nav .nav-link {
@@ -4261,7 +4266,8 @@ input[type=submit].btn-block {
 
     .navbar-expand-md>.container,
     .navbar-expand-md>.container-fluid {
-        flex-wrap: nowrap
+        flex-wrap: nowrap;
+        
     }
 
     .navbar-expand-md .navbar-collapse {
@@ -4279,7 +4285,7 @@ input[type=submit].btn-block {
     .navbar-expand-lg>.container,
     .navbar-expand-lg>.container-fluid {
         padding-right: 0;
-        padding-left: 0
+        padding-left: 0;
     }
 }
 

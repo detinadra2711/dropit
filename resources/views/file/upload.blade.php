@@ -1,102 +1,48 @@
-{{-- @extends('template')
-
-@section('content')
-
-		<link rel="stylesheet" href="{{ URL::asset('css/upload.css') }}">
-	  
-	  
-	<body>
-	  <br>
-	  <br>
-	  <br>
-	  <br>
-      <div class="container ">
-		<h1> Selamat Datang di DropBix</h1>
-		
-		<br>
-		<br>
-		<div class ="col col-lg-8 ">
-		<h3>Silahkan Upload Dokumen Kamu!</h3>
-			<br>
-		<br>
-		<form>
-		  <div class="form-group">
-			<label for="exampleInputEmail1">Nama File</label>
-			<input type="text" class="form-control" placeholder="Masukkan nama file">
-		  </div>
-	
-			
-         <section class="jumbotron text-center">
-			<div class="container">
-
-				
-				<div class="file-upload-wrapper" data-text="Pilih File Kamu!">
-				  <input name="file-upload-field" type="file" class="file-upload-field" value="">
-				</div>
-
-			</div>
-		 </section>
-		 <button type="submit" id="buttonUpload" class="btn btn-primary">Upload</button>
-	
-		</form>
-		</div>
-		
-	  </div>
-   
-	  <br>
-	  <br>
-	  <br>
-	  <br>
-	</body>
-@endsection --}}
-
-
 @extends('template')
 
 @section('content')
 
 		<link rel="stylesheet" href="{{ URL::asset('css/upload.css') }}">
-	  
-	  
 	<body>
-	  <br>
-	  <br>
-	  <br>
-	  <br>
       <div class="container ">
-		<h1> Selamat Datang di DropBix Budi! </h1>
-		
-		<br>
-		<br>
+		{{-- <h1> Selamat Datang di DropBix {{ Auth::user()->name }}! </h1> --}}
+
 		<div class ="col col-lg-8 ">
 		<h3>Silahkan Upload Dokumen Kamu!</h3>
-			<br>
 		<br>
-		<form>
+		<form role="form" method="post" action="{{ route('upload') }}" enctype="multipart/form-data">
+			{{ csrf_field()}}
+
 		  <div class="form-group">
 			<label for="exampleInputEmail1">Nama File</label>
-			<input type="text" class="form-control" placeholder="Masukkan nama file">
+			<input type="text"  name="nama_file" class="form-control" placeholder="Masukkan nama file">
 		  </div>
-	
-			
+		  <div class="form-grup">
+			<label for="exampleInputEmail">Nomor Dokumen</label>
+			<input type="text" name="nomor_dokumen" class="form-control" placeholder="Masukkan nomor dokumen">
+		  </div>
+		  <br>
+		  <div class="form-grup">
+			<label for="exampleInputEmail">Tanggal Dokumen</label>
+			<input type="date" name="tgl_dokumen" class="form-control" placeholder="Masukkan Tanggal dokumen" >
+		  </div>
+		  <br>
+		  <label for="exmapleInputEmail">Upload Dokumen</label>
          <section class="jumbotron text-center">
 			<div class="container">
-
-				
 				<div class="file-upload-wrapper" data-text="Pilih File Kamu!">
-				  <input name="file-upload-field" type="file" class="file-upload-field" value="">
+				  <input type="file" name="file" class="file-upload-field" value="">
 				</div>
 
 			</div>
 		 </section>
 		 <button type="submit" id="buttonUpload" class="btn btn-primary">Upload</button>
-	
+
 		</form>
 		</div>
-		
+
 	  </div>
-   
-	  <br>
+
 	  <br>
 	  <br>
 	  <br>

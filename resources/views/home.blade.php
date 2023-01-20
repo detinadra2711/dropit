@@ -67,10 +67,14 @@
 
          <section class="jumbotron text-center">
             <div class="container">
-               <h1 class="jumbotron-heading">DropBix</h1>
+               <h1 class="jumbotron-heading">DropIT</h1>
                <p>
+                  @if (Auth::user())
+                  <p>Welcome {{ Auth::user()->name }}!</p>
+                  @else
                   <a href="{{ route('register') }}" class="btn btn-primary">Daftar Disini</a>
                   <a href="{{ route('login') }}" class="btn btn-secondary">Sudah Punya Akun? Login</a>
+                  @endif
                </p>
             </div>
          </section>
