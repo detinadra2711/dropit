@@ -21,6 +21,7 @@
 			<input type="text" class="form-control" placeholder="Masukkan nama file" name="nama_file" value = "{{$file->name}}">
 		  </div>
 		  <p>Tanggal Perubahan Terakhir: "{{$file->updated_at}}" </p>
+		  <p>User: {{ Auth::user()->name }}</p>
 			<p>Download File: <a href="{{URL::asset('file/'.$file->url)}}" target="_blank">{{$file->name}}</a> </p>
 
          <section class="jumbotron text-center">

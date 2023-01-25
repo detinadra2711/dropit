@@ -71,16 +71,17 @@
                <p>
                   @if (Auth::user())
                   <p>Welcome {{ Auth::user()->name }}!</p>
+                  @if (Auth::user()->id === 1)
+                  <a href="{{ route('register') }}" class="btn btn-primary">Register Akun</a>
+                  @endif
                   @else
-                  <a href="{{ route('register') }}" class="btn btn-primary">Daftar Disini</a>
-                  <a href="{{ route('login') }}" class="btn btn-secondary">Sudah Punya Akun? Login</a>
+                  <a href="{{ route('login') }}" class="btn btn-primary">LOGIN</a>
                   @endif
                </p>
             </div>
          </section>
       </div>
    </body>
-	  <br>
 	  <br>
 	  <br>
 	  <br>
