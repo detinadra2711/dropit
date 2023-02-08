@@ -4,16 +4,15 @@
 
 		<link rel="stylesheet" href="{{ URL::asset('css/upload.css') }}">
 	<body>
-      <div class="container ">
-		{{-- <h1> Selamat Datang di DropBix {{ Auth::user()->name }}! </h1> --}}
+    <div class="container ">
 
 		<div class ="col col-lg-8 ">
-		<h3>Silahkan Upload Dokumen Kamu!</h3>
+		<h3>Upload Dokumen</h3>
 		<br>
 		<form role="form" method="post" action="{{ route('upload') }}" enctype="multipart/form-data">
 			{{ csrf_field()}}
 
-		  <div class="form-group">
+		<div class="form-group">
 			<label for="exampleInputEmail1">Nama File</label>
 			<input type="text"  name="nama_file" class="form-control" placeholder="Masukkan nama file">
 		  </div>

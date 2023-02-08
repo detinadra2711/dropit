@@ -71,9 +71,7 @@
                <p>
                   @if (Auth::user())
                   <p>Welcome {{ Auth::user()->name }}!</p>
-                  @if (Auth::user()->id === 1)
-                  <a href="{{ route('register') }}" class="btn btn-primary">Register Akun</a>
-                  @endif
+                  
                   @else
                   <a href="{{ route('login') }}" class="btn btn-primary">LOGIN</a>
                   @endif
