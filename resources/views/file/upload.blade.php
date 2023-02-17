@@ -9,8 +9,19 @@
 		<div class ="col col-lg-8 ">
 		<h3>Upload Dokumen</h3>
 		<br>
+
 		<form role="form" method="post" action="{{ route('upload') }}" enctype="multipart/form-data">
 			{{ csrf_field()}}
+			<div class="form-group">
+				<label>Kategori Dokumen</label>
+				<select name="kategori_id" class="form-control" id="">
+					@forelse ($kategori as $item)
+						<option value="{{ $item->id }}">{{ $item->kategori }}</option>
+					@empty
+						<option value="">Document Not Found</option>
+					@endforelse
+				</select>
+			</div>
 
 		<div class="form-group">
 			<label for="exampleInputEmail1">Nama File</label>

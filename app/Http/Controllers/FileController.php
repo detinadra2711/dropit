@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\File;
+use App\Models\Kategori;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
@@ -13,7 +14,7 @@ class FileController extends Controller
 
     public function create(Request $request)
     {
-        
+        $kategori = Kategori::get();
         $file = $request->file('file');
         $tgl_dokumen = Carbon::parse($request->tgl_dokumen);
         $request['tgl_dokumen'] = $tgl_dokumen->format('d-m-Y');
@@ -55,6 +56,7 @@ class FileController extends Controller
 
             File::create([
                 "user_id"       => Auth::user()->id,
+                "kategori_id"   => $request->kategori_id,
                 "name"          => $request->nama_file,
                 "nomor_dokumen" => $request->nomor_dokumen,
                 "tgl_dokumen"   => $request->tgl_dokumen,
