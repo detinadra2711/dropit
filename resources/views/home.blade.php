@@ -67,7 +67,7 @@
 
          <section class="jumbotron text-center">
             <div class="container">
-               <h1 class="jumbotron-heading">DropIT</h1>
+               <h1 class="jumbotron-heading">ARSIP ERBA</h1>
                <p>
                   @if (Auth::user())
                   <p>Welcome {{ Auth::user()->name }}!</p>

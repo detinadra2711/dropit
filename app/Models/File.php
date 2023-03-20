@@ -12,7 +12,7 @@ class File extends Model
 
     protected $table = 'file';
     protected $fillable = [
-        'user_id', 'kategori_id', 'name', 'bagian_id', 'nomor_dokumen', 'tgl_dokumen', 'url', 'is_active'
+        'user_id', 'kategori_id', 'name', 'bagian_id', 'nomor_dokumen', 'tgl_dokumen', 'catatan', 'url', 'is_active'
     ];
 
     // public function getCreateAttribute(){

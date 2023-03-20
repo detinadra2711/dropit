@@ -39,6 +39,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/detail-file/{id}', 'FileController@get_file')->name('detail-file');
 
+    Route::get('/edit-file/{id}', 'FileController@edit')->name('edit-file');
+
     Route::post('update', 'FileController@update')->name('update');
 
     Route::post('show', 'FileController@show')->name('show');

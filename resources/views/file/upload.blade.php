@@ -37,6 +37,12 @@
 			<input type="date" name="tgl_dokumen" class="form-control" placeholder="Masukkan Tanggal dokumen" >
 		  </div>
 		  <br>
+		  <br>
+		  <div class="form-grup">
+			<label for="exampleInputEmail">Catatan</label>
+			<input type="text" name="catatan" class="form-control" placeholder="Masukkan catatan" >
+		  </div>
+		  <br>
 		  <label for="exmapleInputEmail">Upload Dokumen</label>
          <section class="jumbotron text-center">
 			<div class="container">

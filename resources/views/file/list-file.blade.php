@@ -38,7 +38,9 @@
 				<td>{{ $file->tgl_dokumen }}</td>
 				<td>{{$file->updated_at}}</td>
 				<td>
-					<a href="{{route(('detail-file'), $file->id)}}"><button type="submit">Detail</button></a>
+					<a href="{{route(('detail-file'), $file->id)}}"><button type="submit" class="btn btn-primary">Detail</button></a>
+					
+					{{-- <a href="{{route(('edit-file'), $file->id)}}"><button type="submit">Edit</button></a> --}}
 				</td>
 			  </tr>
 			@endforeach

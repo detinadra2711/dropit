@@ -12,49 +12,66 @@
 		<div class ="col col-lg-8 ">
 
 		<br><br>
+	
 		<form id="form-add-course" role="form" method="post" action="{{ route('update') }}" enctype="multipart/form-data">
 			<input type="hidden" name="id" value="{{ $file->id}}">
 			{{ csrf_field()}}
+		{{-- <p>User: {{ Auth::user()->name }}</p> --}}
 
 		<div class="form-group">
-			<label for="exampleInputEmail1">Edit Nama File</label>
+			<label for="exampleInputEmail1">Edit Nama Dokumen</label>
 			<input type="text" class="form-control" placeholder="Masukkan nama file" name="nama_file" value = "{{$file->name}}">
 		</div>
-		<p>Tanggal Perubahan Terakhir: "{{$file->updated_at}}" </p>
-		<p>User: {{ Auth::user()->name }}</p>
-			@if (Auth::user()->bagian_id == 1)
+
+		<div class="form-group">
+			<label for="exampleInputEmail1">Edit Nomor Dokumen</label>
+			<input type="text" class="form-control" placeholder="Masukkan nomor dokumen" name="nomor_dokumen" value = "{{$file->nomor_dokumen}}">
+		</div>
+		<div class="form-grup">
+			<label for="exampleInputEmail">Tanggal Dokumen</label>
+			<input type="date" name="tgl_dokumen" class="form-control" placeholder="Edit tanggal dokumen" value="{{ $file->tgl_dokumen }}" >
+		</div>
+		<br>
+		
+		<div class="form-group">
+			<label for="exampleInputEmail1">Edit Catatan</label>
+			<input type="text" class="form-control" placeholder="Eit catatan" name="catatan" value = "{{$file->catatan}}">
+		</div>
+		{{-- <p>Catatan: {{$file->catatan}} </p> --}}
+			@if (Auth::user()->id == 1)
 				<p>Preview Dokumen: <a href="{{URL::asset('dokumen/'.$file->url)}}" target="_blank">{{$file->name}}</a> </p>
-			@elseif (Auth::user()->bagian_id == 2)
+			@elseif (Auth::user()->id == 2)
 				<p>Preview Dokumen: <a href="{{URL::asset('dokumen/umper/'.$file->url)}}" target="_blank">{{$file->name}}</a> </p>
-			@elseif (Auth::user()->bagian_id == 3)
+			@elseif (Auth::user()->id == 3)
 				<p>Preview Dokumen: <a href="{{URL::asset('dokumen/yanmed/'.$file->url)}}" target="_blank">{{$file->name}}</a> </p>
-			@elseif (Auth::user()->bagian_id == 4)
+			@elseif (Auth::user()->id == 4)
 				<p>Preview Dokumen: <a href="{{URL::asset('dokumen/jangmed/'.$file->url)}}" target="_blank">{{$file->name}}</a> </p>
-			@elseif (Auth::user()->bagian_id == 5)
+			@elseif (Auth::user()->id == 5)
 				<p>Preview Dokumen: <a href="{{URL::asset('dokumen/keuangan
 			/'.$file->url)}}" target="_blank">{{$file->name}}</a> </p>
-			@elseif (Auth::user()->bagian_id == 6)
+			@elseif (Auth::user()->id == 6)
 				<p>Preview Dokumen: <a href="{{URL::asset('dokumen/pengembangan/'.$file->url)}}" target="_blank">{{$file->name}}</a> </p>
-			@elseif (Auth::user()->bagian_id == 7)
+			@elseif (Auth::user()->id == 7)
 				<p>Preview Dokumen: <a href="{{URL::asset('dokumen/sdm/'.$file->url)}}" target="_blank">{{$file->name}}</a> </p>
-			@elseif (Auth::user()->bagian_id == 8)
+			@elseif (Auth::user()->id == 8)
 				<p>Preview Dokumen: <a href="{{URL::asset('dokumen/kom-keperawatan/'.$file->url)}}" target="_blank">{{$file->name}}</a> </p>
-			@elseif (Auth::user()->bagian_id == 9)
+			@elseif (Auth::user()->id == 9)
 				<p>Preview Dokumen: <a href="{{URL::asset('dokumen/kom-medik/'.$file->url)}}" target="_blank">{{$file->name}}</a> </p>
-			@elseif (Auth::user()->bagian_id == 10)
+			@elseif (Auth::user()->id == 10)
 				<p>Preview Dokumen: <a href="{{URL::asset('dokumen/kom-mutu/'.$file->url)}}" target="_blank">{{$file->name}}</a> </p>
-			@elseif (Auth::user()->bagian_id == 11)
+			@elseif (Auth::user()->id == 11)
 				<p>Preview Dokumen: <a href="{{URL::asset('dokumen/kom-nakes-lain/'.$file->url)}}" target="_blank">{{$file->name}}</a> </p>
-			@elseif (Auth::user()->bagian_id == 12)
+			@elseif (Auth::user()->id == 12)
 				<p>Preview Dokumen: <a href="{{URL::asset('dokumen/kom-rekam-medik/'.$file->url)}}" target="_blank">{{$file->name}}</a> </p>
 			@else
 				<p>Preview Dokumen: <a href="{{URL::asset('dokumen/other/'.$file->url)}}" target="_blank">{{$file->name}}</a> </p>
+				
 			@endif
-
-         <section class="jumbotron text-center">
+			
+		<p>Edit Uploaded Dokumen: <h6 style="color:#ff0000;">Required: Upload ulang dokumen!!</h6>
+			<section class="jumbotron text-center"></p>
+		
 			<div class="container">
-
-
 				<div class="file-upload-wrapper" data-text="Pilih File Kamu!">
 				  <input name="file" type="file" class="file-upload-field" value="">
 				</div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\File;
 use App\Models\Kategori;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
@@ -14,7 +15,7 @@ class FileController extends Controller
 
     public function create(Request $request)
     {
-        $kategori = Kategori::get();
+        // $kategori = Kategori::get();
         $file = $request->file('file');
         $tgl_dokumen = Carbon::parse($request->tgl_dokumen);
         $request['tgl_dokumen'] = $tgl_dokumen->format('d-m-Y');
@@ -60,6 +61,7 @@ class FileController extends Controller
                 "name"          => $request->nama_file,
                 "nomor_dokumen" => $request->nomor_dokumen,
                 "tgl_dokumen"   => $request->tgl_dokumen,
+                "catatan" => $request->catatan,
                 "url"       => $url,
                 'is_active'          => 1 //datanya masih ada, kalau sudah di delete akan berubah jadi 0
             ]);
@@ -71,11 +73,11 @@ class FileController extends Controller
     public function get_list_file()
     {
 
-        $files = File::where('user_id', Auth::id())
+        $file = File::where('user_id', Auth::id())
             ->where('is_active', 1)
             ->get();
 
-        return view('file.list-file', ["files" => $files]);
+        return view('file.list-file', ["files" => $file]);
     }
 
     public function get_file($id_file)
@@ -133,7 +135,12 @@ class FileController extends Controller
 
             File::where('is_active', 1)
                 ->where('id', $request->id)
-                ->update(['url' => $url, 'name' => $request->nama_file]);
+                ->update([  'url' => $url,
+                            'name' => $request->nama_file,
+                            'nomor_dokumen' => $request->nomor_dokumen,
+                            'tgl_dokumen' => $request->tgl_dokumen,
+                            'catatan' => $request->catatan,
+                        ]);
 
             return redirect()->route('detail-file', ['id' => $request->id]);
         } else {
@@ -151,4 +158,6 @@ class FileController extends Controller
 
         return view('file.show');
     }
+
+
 }
