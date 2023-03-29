@@ -12,7 +12,6 @@ class PermissionMiddleware
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
      * @return mixed
      */
     public function handle($request, Closure $next, $permission = null, $guard = null)
@@ -23,7 +22,7 @@ class PermissionMiddleware
             throw UnauthorizedException::notLoggedIn();
         }
 
-        if (!is_null($permission)) {
+        if (! is_null($permission)) {
             $permissions = is_array($permission)
                 ? $permission
                 : explode('|', $permission);
@@ -32,9 +31,8 @@ class PermissionMiddleware
         if (is_null($permission)) {
             $permission = $request->route()->getName();
 
-            $permissions = array($permission);
+            $permissions = [$permission];
         }
-
 
         foreach ($permissions as $permission) {
             if ($authGuard->user()->can($permission)) {

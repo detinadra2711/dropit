@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
-                
+
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
@@ -68,7 +68,7 @@
                                     {{ __('Register') }}
                                 </button>
 								<p>Sudah punya akun?<a class="btn btn-link" href="{{ route('login') }}">Login</a>
-					
+
                             </div>
                         </div>
                     </form>

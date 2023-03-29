@@ -1,9 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\FileController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,40 +14,20 @@ use App\Http\Controllers\FileController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
-
-// Route::get('/upload', function () {
-//     return view('file.upload');
-// })->name('upload');
-
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/upload', function () {
-        return view('file.upload');
-    })->name('upload');
-
-    Route::post('upload', 'FileController@create');
-
-    Route::get('/list-file', 'FileController@get_list_file')->name('list-file');
-
-    Route::get('/detail-file/{id}', 'FileController@get_file')->name('detail-file');
-
-    Route::get('/edit-file/{id}', 'FileController@edit')->name('edit-file');
-
-    Route::post('update', 'FileController@update')->name('update');
-
-    Route::post('show', 'FileController@show')->name('show');
+Route::group([
+    'middleware' => 'auth',
+    'prefix' => 'arsip',
+], function () {
+    Route::get('/', 'FileController@index')->name('file.index');
+    Route::get('/create', 'FileController@create')->name('file.create');
+    Route::post('/create', 'FileController@store')->name('file.store');
+    Route::get('/edit/{id}', 'FileController@edit')->name('file.edit');
+    Route::patch('/edit/{id}', 'FileController@update')->name('file.update');
+    Route::delete('/destroy/{id}', 'FileController@destroy')->name('file.destroy');
 });
 
-Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+Auth::routes([
+    'register' => false,
+]);
