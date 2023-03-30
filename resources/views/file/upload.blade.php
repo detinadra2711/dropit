@@ -46,7 +46,8 @@
 
                             <div class="mb-3">
                                 <label for="tgl_dokumen" class="form-label">Tanggal Dokumen</label>
-                                <input type="date" id="tgl_dokumen" name="tgl_dokumen" value="{{ old('tgl_dokumen') }}"
+                                <input type="date" id="tgl_dokumen" name="tgl_dokumen"
+                                       value="{{ old('tgl_dokumen') ?? now()->format('Y-m-d') }}"
                                        class="form-control form-control-sm @error('tgl_dokumen') is-invalid @enderror"
                                        placeholder="Masukkan Tanggal dokumen">
                                 @error('tgl_dokumen')
