@@ -14,7 +14,7 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <title>Dropit - Ernaldi Bahar</title>
-    
+
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
 
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
@@ -40,9 +40,10 @@
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('#list-file').DataTable();
     });
 </script>
+@include('sweetalert::alert')
 </body>
 </html>

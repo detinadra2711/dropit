@@ -55,7 +55,7 @@ class FileController extends Controller
             'is_active' => 1, //datanya masih ada, kalau sudah di delete akan berubah jadi 0
         ]);
 
-        return redirect()->route('file.index');
+        return redirect()->route('file.index')->withToastSuccess('Document has been uploaded');
     }
 
     public function edit($id): View
@@ -113,7 +113,7 @@ class FileController extends Controller
             'catatan' => $request->catatan,
         ]);
 
-        return redirect()->route('file.index');
+        return redirect()->route('file.index')->withToastSuccess('Document has been updated');
     }
 
     public function destroy($id): RedirectResponse
@@ -130,7 +130,7 @@ class FileController extends Controller
             $document->delete();
         }
 
-        return redirect()->route('file.index');
+        return redirect()->route('file.index')->withToastSuccess('Document has been deleted');
     }
 
     private function bagian()
