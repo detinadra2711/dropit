@@ -41,16 +41,11 @@
                                             <button class="btn btn-sm btn-info">Edit</button>
                                         </a>
 
-                                        <a href="#" class="ms-2"
-                                           onclick="event.preventDefault();document.getElementById('delete-form').submit();">
-                                            <button class="btn btn-sm btn-danger">Delete</button>
-                                            <form id="delete-form" action="{{ route(('file.destroy'), $file->id) }}"
-                                                  method="post"
-                                                  hidden>
-                                                @csrf
-                                                @method('DELETE')
-                                            </form>
-                                        </a>
+                                        <button class="btn btn-sm btn-danger ms-2" data-bs-toggle="modal"
+                                                data-bs-target="#modal-delete"
+                                                data-url="{{ route('file.destroy', $file->id) }}"
+                                                data-title="{{ $file->name }}">Delete
+                                        </button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -61,4 +56,21 @@
             </div>
         </div>
     </div>
+
+    <!-- Delete Modal Component -->
+    <x-modal-delete id="modal-delete" />
+    <!-- End Delete Modal Component -->
 @endsection
+
+@push('script')
+    <script>
+        $(document).ready(function() {
+            $("#modal-delete").on("show.bs.modal", (event) => {
+                const url = $(event.relatedTarget).data("url");
+                const title = $(event.relatedTarget).data("title");
+                $("#form-delete").attr("action", url);
+                $("#text-value").text(title);
+            });
+        });
+    </script>
+@endpush
