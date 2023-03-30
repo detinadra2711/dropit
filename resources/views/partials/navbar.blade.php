@@ -1,41 +1,31 @@
-      <nav class="navbar navbar-inverse">
-         <div class="container-fluid">
-            <div class="navbar-header">
-               <a class="navbar-brand" href="#">ARSIP ERBA</a>
-            </div>
-            <ul class="nav navbar-nav">
-               <li class="active"><a href="{{ route('home') }}">Home</a></li>
+<nav class="navbar navbar-expand navbar-dark bg-dark shadow-sm">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ route('home') }}">{{ config('app.name', 'Arsip') }}</a>
 
-                @if(Auth::user())
-                  <li class="active"><a href="{{ route('upload') }}">Upload File</a></li>
-			             <li class="active"><a href="{{ route('list-file') }}">List File</a></li>
-                @endif
-            </ul>
+        <div class="collapse navbar-collapse">
+            @auth
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->segment(1) == null ? 'active' : '' }}" aria-current="page"
+                           href="{{ route('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->segment(1) == 'arsip' ? 'active' : '' }}"
+                           href="{{ route('file.index') }}">Dokumen</a>
+                    </li>
+                </ul>
 
-			 <ul class="nav navbar-nav navbar-right">
-             @if(Auth::user())
-			         <li><a href="{{ route('logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-			       @else
-		           {{-- <li><a href="{{ route('register') }}"><span class="glyphicon glyphicon-user"></span> Daftar</a></li> --}}
-               <li><a href="{{ route('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-			       @endif
-            </ul>
-         </div>
-      </nav>
-
-            {{-- <nav class="navbar navbar-inverse">
-         <div class="container-fluid">
-            <div class="navbar-header">
-               <a class="navbar-brand" href="#">DropBix</a>
-            </div>
-            <ul class="nav navbar-nav">
-               <li class="active"><a href="/home">Home</a></li>
-			   <li class="active"><a href="/upload">Upload File</a></li>
-			   <li class="active"><a href="#">Download File</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-               <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-               <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            </ul>
-         </div>
-      </nav> --}}
+                <a href="#" onclick="event.preventDefault();document.getElementById('form-logout').submit();">
+                    <button class="btn btn-sm btn-danger">Logout</button>
+                    <form id="form-logout" action="{{ route('logout') }}" method="post" hidden>
+                        @csrf
+                    </form>
+                </a>
+            @else
+                <a href="{{ route('login') }}" class="ms-auto">
+                    <button class="btn btn-sm btn-primary">Login</button>
+                </a>
+            @endauth
+        </div>
+    </div>
+</nav>

@@ -1,66 +1,100 @@
-@extends('template')
+@extends('layouts.web')
 
 @section('content')
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Upload Dokumen</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="{{ route('file.store') }}" method="post" enctype="multipart/form-data">
+                            @csrf
 
-		<link rel="stylesheet" href="{{ URL::asset('css/upload.css') }}">
-	<body>
-    <div class="container ">
+                            <div class="mb-3">
+                                <label for="nama_file" class="form-label">Nama File</label>
+                                <input type="text"
+                                       class="form-control form-control-sm @error('nama_file') is-invalid @enderror"
+                                       id="nama_file"
+                                       name="nama_file"
+                                       value="{{ old('nama_file') }}"
+                                       placeholder="Masukkan nama file">
+                                @error('nama_file')
+                                <div class="invalid-feedback">
+                                    <strong>
+                                        {{ $message }}
+                                    </strong>
+                                </div>
+                                @enderror
+                            </div>
 
-		<div class ="col col-lg-8 ">
-		<h3>Upload Dokumen</h3>
-		<br>
+                            <div class="mb-3">
+                                <label for="nomor_dokumen" class="form-label">Nomor Dokumen</label>
+                                <input type="text" id="nomor_dokumen" name="nomor_dokumen"
+                                       value="{{ old('nomor_dokumen') }}"
+                                       class="form-control form-control-sm @error('nomor_dokumen') is-invalid @enderror"
+                                       placeholder="Masukkan nomor dokumen">
+                                @error('nomor_dokumen')
+                                <div class="invalid-feedback">
+                                    <strong>
+                                        {{ $message }}
+                                    </strong>
+                                </div>
+                                @enderror
+                            </div>
 
-		<form role="form" method="post" action="{{ route('upload') }}" enctype="multipart/form-data">
-			{{ csrf_field()}}
-			{{-- <div class="form-group">
-				<label>Kategori Dokumen</label>
-				<select name="kategori_id" class="form-control" id="">
-					@forelse ($kategori as $item)
-						<option value="{{ $item->id }}">{{ $item->kategori }}</option>
-					@empty
-						<option value="">Document Not Found</option>
-					@endforelse
-				</select>
-			</div> --}}
+                            <div class="mb-3">
+                                <label for="tgl_dokumen" class="form-label">Tanggal Dokumen</label>
+                                <input type="date" id="tgl_dokumen" name="tgl_dokumen" value="{{ old('tgl_dokumen') }}"
+                                       class="form-control form-control-sm @error('tgl_dokumen') is-invalid @enderror"
+                                       placeholder="Masukkan Tanggal dokumen">
+                                @error('tgl_dokumen')
+                                <div class="invalid-feedback">
+                                    <strong>
+                                        {{ $message }}
+                                    </strong>
+                                </div>
+                                @enderror
+                            </div>
 
-		<div class="form-group">
-			<label for="exampleInputEmail1">Nama File</label>
-			<input type="text"  name="nama_file" class="form-control" placeholder="Masukkan nama file">
-		  </div>
-		  <div class="form-grup">
-			<label for="exampleInputEmail">Nomor Dokumen</label>
-			<input type="text" name="nomor_dokumen" class="form-control" placeholder="Masukkan nomor dokumen">
-		  </div>
-		  <br>
-		  <div class="form-grup">
-			<label for="exampleInputEmail">Tanggal Dokumen</label>
-			<input type="date" name="tgl_dokumen" class="form-control" placeholder="Masukkan Tanggal dokumen" >
-		  </div>
-		  <br>
-		  <br>
-		  <div class="form-grup">
-			<label for="exampleInputEmail">Catatan</label>
-			<input type="text" name="catatan" class="form-control" placeholder="Masukkan catatan" >
-		  </div>
-		  <br>
-		  <label for="exmapleInputEmail">Upload Dokumen</label>
-         <section class="jumbotron text-center">
-			<div class="container">
-				<div class="file-upload-wrapper" data-text="Pilih File Kamu!">
-				  <input type="file" name="file" class="file-upload-field" value="">
-				</div>
+                            <div class="mb-3">
+                                <label for="catatan" class="form-label">Catatan</label>
+                                <textarea class="form-control form-control-sm @error('catatan') is-invalid @enderror"
+                                          name="catatan" id="catatan" rows="3"
+                                          placeholder="Masukkan catatan">{{ old('catatan') }}</textarea>
+                                @error('catatan')
+                                <div class="invalid-feedback">
+                                    <strong>
+                                        {{ $message }}
+                                    </strong>
+                                </div>
+                                @enderror
+                            </div>
 
-			</div>
-		 </section>
-		 <button type="submit" id="buttonUpload" class="btn btn-primary">Upload</button>
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label">Upload Dokumen</label>
+                                <input class="form-control form-control-sm @error('file') is-invalid @enderror"
+                                       type="file" id="formFile" name="file">
+                                @error('file')
+                                <div class="invalid-feedback">
+                                    <strong>
+                                        {{ $message }}
+                                    </strong>
+                                </div>
+                                @enderror
+                            </div>
 
-		</form>
-		</div>
-
-	  </div>
-
-	  <br>
-	  <br>
-	  <br>
-	</body>
+                            <div class="mt-5 text-end">
+                                <a href="{{ route('file.index') }}">
+                                    <button type="button" class="btn btn-sm btn-light">Kembali</button>
+                                </a>
+                                <button type="submit" class="btn btn-sm btn-primary ms-1">Upload</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
