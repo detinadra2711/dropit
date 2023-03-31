@@ -37,7 +37,6 @@ class FileController extends Controller
             'file' => 'required|file|mimes:pdf',
         ]);
 
-<<<<<<< HEAD
         if (Auth::user()->bagian_id == 1) { //id 1 -> admin
             $destinationPath = 'dokumen';
         } elseif (Auth::user()->bagian_id == 2) { //id 2 -> umper/
@@ -65,9 +64,6 @@ class FileController extends Controller
         } else {
             $destinationPath = 'dokumen/other';
         }
-=======
-        $destinationPath = $this->bagian();
->>>>>>> f243f88295fddd58639e5440d6fdd703f0e3511b
 
         $file = $request->file('file');
         $name = Str::slug($request->nama_file).'.'.$file->getClientOriginalExtension();
@@ -85,7 +81,7 @@ class FileController extends Controller
             'is_active' => 1, //datanya masih ada, kalau sudah di delete akan berubah jadi 0
         ]);
 
-        return redirect()->route('file.index')->withToastSuccess('Document has been uploaded');
+        return redirect()->route('file.index');
     }
 
     public function edit($id): View
@@ -117,7 +113,33 @@ class FileController extends Controller
             ->get()
             ->first();
 
-        $destinationPath = $this->bagian();
+        if (Auth::user()->id == 1) { //id 1 -> admin
+            $destinationPath = 'dokumen/';
+        } elseif (Auth::user()->id == 2) { //id 2 -> umper/
+            $destinationPath = 'dokumen/umper';
+        } elseif (Auth::user()->id == 3) { //id 3 -> yanmed/
+            $destinationPath = 'dokumen/yanmed';
+        } elseif (Auth::user()->id == 4) { //id 4 -> jangmed/
+            $destinationPath = 'dokumen/jangmed';
+        } elseif (Auth::user()->id == 5) { //id 5 -> keuangan/
+            $destinationPath = 'dokumen/keuangan';
+        } elseif (Auth::user()->id == 6) { //id 6 -> pengembangan/
+            $destinationPath = 'dokumen/pengembangan';
+        } elseif (Auth::user()->id == 7) { //id 7 -> sdm&kepeg/
+            $destinationPath = 'dokumen/sdm';
+        } elseif (Auth::user()->id == 8) { //id 8 ->komite keperawatan/
+            $destinationPath = 'dokumen/kom-keperawatan';
+        } elseif (Auth::user()->id == 9) { //id 9 -> komite medik/
+            $destinationPath = 'dokumen/kom-medik';
+        } elseif (Auth::user()->id == 10) { //id 10 -> komite mutu/
+            $destinationPath = 'dokumen/kom-mutu';
+        } elseif (Auth::user()->id == 11) { //id 11 -> komite nakes lain/
+            $destinationPath = 'dokumen/kom-nakes-lain';
+        } elseif (Auth::user()->id == 12) { //id 12 -> komite rekam medik/
+            $destinationPath = 'dokumen/kom-rekam-medik';
+        } else {
+            $destinationPath = 'dokumen/other';
+        }
 
         if ($request->hasFile('file')) {
             $new_file = $request->file('file');
@@ -143,7 +165,7 @@ class FileController extends Controller
             'catatan' => $request->catatan,
         ]);
 
-        return redirect()->route('file.index')->withToastSuccess('Document has been updated');
+        return redirect()->route('file.index');
     }
 
     public function destroy($id): RedirectResponse
@@ -160,40 +182,6 @@ class FileController extends Controller
             $document->delete();
         }
 
-        return redirect()->route('file.index')->withToastSuccess('Document has been deleted');
-    }
-
-    private function bagian()
-    {
-        $user = auth()->user();
-        if ($user->bagian_id == 1) { //id 1 -> admin
-            $destinationPath = 'dokumen';
-        } elseif ($user->bagian_id == 2) { //id 2 -> umper/
-            $destinationPath = 'dokumen/umper';
-        } elseif ($user->bagian_id == 3) { //id 3 -> yanmed/
-            $destinationPath = 'dokumen/yanmed';
-        } elseif ($user->bagian_id == 4) { //id 4 -> jangmed/
-            $destinationPath = 'dokumen/jangmed';
-        } elseif ($user->bagian_id == 5) { //id 5 -> keuangan/
-            $destinationPath = 'dokumen/keuangan';
-        } elseif ($user->bagian_id == 6) { //id 6 -> pengembangan/
-            $destinationPath = 'dokumen/pengembangan';
-        } elseif ($user->bagian_id == 7) { //id 7 -> sdm&kepeg/
-            $destinationPath = 'dokumen/sdm';
-        } elseif ($user->bagian_id == 8) { //id 8 ->komite keperawatan/
-            $destinationPath = 'dokumen/kom-keperawatan';
-        } elseif ($user->bagian_id == 9) { //id 9 -> komite medik/
-            $destinationPath = 'dokumen/kom-medik';
-        } elseif ($user->bagian_id == 10) { //id 10 -> komite mutu/
-            $destinationPath = 'dokumen/kom-mutu';
-        } elseif ($user->bagian_id == 11) { //id 11 -> komite nakes lain/
-            $destinationPath = 'dokumen/kom-nakes-lain';
-        } elseif ($user->bagian_id == 12) { //id 12 -> komite rekam medik/
-            $destinationPath = 'dokumen/kom-rekam-medik';
-        } else {
-            $destinationPath = 'dokumen/other';
-        }
-
-        return $destinationPath;
+        return redirect()->route('file.index');
     }
 }
