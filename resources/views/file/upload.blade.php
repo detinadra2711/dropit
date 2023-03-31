@@ -1,4 +1,4 @@
-@extends('layouts.web')
+@extends('layouts.app')
 
 @section('content')
     <div class="container py-5">
@@ -46,7 +46,8 @@
 
                             <div class="mb-3">
                                 <label for="tgl_dokumen" class="form-label">Tanggal Dokumen</label>
-                                <input type="date" id="tgl_dokumen" name="tgl_dokumen" value="{{ old('tgl_dokumen') }}"
+                                <input type="date" id="tgl_dokumen" name="tgl_dokumen"
+                                       value="{{ old('tgl_dokumen') ?? now()->format('Y-m-d') }}"
                                        class="form-control form-control-sm @error('tgl_dokumen') is-invalid @enderror"
                                        placeholder="Masukkan Tanggal dokumen">
                                 @error('tgl_dokumen')
@@ -87,9 +88,9 @@
 
                             <div class="mt-5 text-end">
                                 <a href="{{ route('file.index') }}">
-                                    <button type="button" class="btn btn-sm btn-light">Kembali</button>
+                                    <button type="button" class="btn btn-sm btn-secondary shadow">Kembali</button>
                                 </a>
-                                <button type="submit" class="btn btn-sm btn-primary ms-1">Upload</button>
+                                <button type="submit" class="btn btn-sm btn-primary shadow ms-1">Upload</button>
                             </div>
                         </form>
                     </div>

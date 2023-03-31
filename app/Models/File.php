@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Carbon;
 
 class File extends Model
 {
@@ -15,9 +14,4 @@ class File extends Model
     protected $fillable = [
         'user_id', 'kategori_id', 'name', 'bagian_id', 'nomor_dokumen', 'tgl_dokumen', 'catatan', 'url', 'is_active',
     ];
-
-    // public function getCreateAttribute(){
-    //     return Carbon::parse($this->attributes['created_at'])
-    //     -> translatedFormat()
-    // }
 }

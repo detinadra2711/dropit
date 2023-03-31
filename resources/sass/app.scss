@@ -1,0 +1,131 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+a {
+    text-decoration: none !important;
+}
+
+.invalid-feedback {
+    font-size: 12px !important;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 3px;
+
+    .card-header {
+        background-color: white;
+        border-bottom: none;
+    }
+
+    .card-body .form-label {
+        font-size: 0.875rem;
+        font-weight: 500;
+    }
+}
+
+.btn {
+    font-weight: 500;
+    font-size: 12px;
+    padding: 0.3rem 0.8rem;
+    letter-spacing: 0.5px;
+
+    &.btn-primary {
+        box-shadow: 0 2px 4px #3F8BFD;
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+
+        &:hover {
+            background-color: #394eea !important;
+        }
+    }
+
+    &.btn-secondary {
+        box-shadow: 0 2px 4px #e1e5e8;
+        background-color: #cdd3d8;
+        border-color: #cdd3d8;
+        color: #fff;
+
+        &:hover {
+            background-color: #bfc6cd !important;
+            color: #fff !important;
+        }
+    }
+
+    &.btn-success {
+        box-shadow: 0 2px 4px #a8f5b4;
+        background-color: #63ed7a;
+        border-color: #63ed7a;
+        color: #fff;
+
+        &:hover {
+            background-color: #4cea67 !important;
+            color: #fff !important;
+        }
+    }
+
+    &.btn-danger {
+        box-shadow: 0 2px 4px #fd9b96;
+        background-color: #fc544b;
+        border-color: #fc544b;
+        color: #fff;
+
+        &:hover {
+            background-color: #fb160a !important;
+        }
+    }
+
+    &.btn-warning {
+        box-shadow: 0 2px 4px #ffc473;
+        background-color: #ffa426;
+        border-color: #ffa426;
+        color: #fff;
+
+        &:hover {
+            background-color: #ff990d !important;
+            color: #fff !important;
+        }
+    }
+
+    &.btn-info {
+        box-shadow: 0 2px 4px #82d3f8;
+        background-color: #3abaf4;
+        border-color: #3abaf4;
+        color: #fff;
+
+        &:hover {
+            background-color: #0da8ee !important;
+        }
+    }
+
+    &.btn-light {
+        box-shadow: 0 2px 4px #e6ecf1;
+        background-color: #e3eaef;
+        border-color: #e3eaef;
+        color: #191d21;
+
+        &:hover {
+            background-color: #c3d2dc !important;
+        }
+    }
+
+    &.btn-dark {
+        box-shadow: 0 2px 4px #677888;
+        background-color: #404A54;
+        border-color: #404A54;
+        color: #fff;
+
+        &:hover {
+            background-color: black !important;
+        }
+    }
+}
