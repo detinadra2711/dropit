@@ -38,7 +38,7 @@ class FileController extends Controller
         ]);
 
         if (Auth::user()->bagian_id == 1) { //id 1 -> admin
-            $destinationPath = 'dokumen/';
+            $destinationPath = 'dokumen';
         } elseif (Auth::user()->bagian_id == 2) { //id 2 -> umper/
             $destinationPath = 'dokumen/umper';
         } elseif (Auth::user()->bagian_id == 3) { //id 3 -> yanmed/
