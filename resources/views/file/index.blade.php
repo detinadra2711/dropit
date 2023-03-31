@@ -1,4 +1,4 @@
-@extends('layouts.web')
+@extends('layouts.app')
 
 @section('content')
     <div class="container py-5">
@@ -9,7 +9,7 @@
                         <h4>List Dokumen</h4>
 
                         <a href="{{ route('file.create') }}">
-                            <button class="btn btn-primary">Upload</button>
+                            <button class="btn btn-sm btn-primary shadow">Upload</button>
                         </a>
                     </div>
                     <div class="card-body">
@@ -33,15 +33,15 @@
                                     <td>{{ $file->updated_at->isoFormat('DD MMMM YYYY - H:m') }}</td>
                                     <td>
                                         <a href="{{ asset($file->url) }}" target="_blank">
-                                            <button class="btn btn-sm btn-dark">Preview</button>
+                                            <button class="btn btn-sm btn-dark shadow">Preview</button>
                                         </a>
                                     </td>
                                     <td class="d-flex align-items-center justify-content-end">
                                         <a href="{{ route(('file.edit'), $file->id) }}">
-                                            <button class="btn btn-sm btn-info">Edit</button>
+                                            <button class="btn btn-sm btn-info shadow">Edit</button>
                                         </a>
 
-                                        <button class="btn btn-sm btn-danger ms-2" data-bs-toggle="modal"
+                                        <button class="btn btn-sm btn-danger shadow ms-2" data-bs-toggle="modal"
                                                 data-bs-target="#modal-delete"
                                                 data-url="{{ route('file.destroy', $file->id) }}"
                                                 data-title="{{ $file->name }}">Delete

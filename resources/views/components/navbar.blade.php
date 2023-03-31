@@ -16,14 +16,14 @@
                 </ul>
 
                 <a href="#" onclick="event.preventDefault();document.getElementById('form-logout').submit();">
-                    <button class="btn btn-sm btn-danger">Logout</button>
+                    <button class="btn btn-sm btn-danger shadow">Logout</button>
                     <form id="form-logout" action="{{ route('logout') }}" method="post" hidden>
                         @csrf
                     </form>
                 </a>
             @else
                 <a href="{{ route('login') }}" class="ms-auto">
-                    <button class="btn btn-sm btn-primary">Login</button>
+                    <button class="btn btn-sm btn-primary shadow">Login</button>
                 </a>
             @endauth
         </div>

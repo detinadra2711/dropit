@@ -1,4 +1,4 @@
-@extends('layouts.web')
+@extends('layouts.app')
 
 @section('content')
     <div class="container py-5">
@@ -88,9 +88,9 @@
 
                             <div class="mt-5 text-end">
                                 <a href="{{ route('file.index') }}">
-                                    <button type="button" class="btn btn-sm btn-light">Kembali</button>
+                                    <button type="button" class="btn btn-sm btn-secondary shadow">Kembali</button>
                                 </a>
-                                <button type="submit" class="btn btn-sm btn-primary ms-1">Upload</button>
+                                <button type="submit" class="btn btn-sm btn-primary shadow ms-1">Upload</button>
                             </div>
                         </form>
                     </div>
